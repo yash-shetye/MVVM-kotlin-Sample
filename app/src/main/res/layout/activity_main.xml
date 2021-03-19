@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="v.abhijeet.mvvmfinal.viewmodel.LoginViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:ems="15"
+                android:layout_height="wrap_content"
+                app:addTextChangedListener="@{viewmodel.emailTextWatcher}"/>
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:ems="15"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:addTextChangedListener="@{viewmodel.passwordTextWatcher}"/>
+
+        </LinearLayout>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_login"
+            android:text="login"
+           android:layout_above="@+id/btn_signUp"
+            android:onClick="@{viewmodel::onLoginClicked}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_signUp"
+            android:text="SignUp"
+
+            android:layout_alignParentBottom="true"
+            android:onClick="@{viewmodel::onSignUpClicked}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</layout>
